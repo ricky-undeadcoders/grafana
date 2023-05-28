@@ -1,11 +1,11 @@
 name: trigger-mirror
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
-  pull_request_target:
-    types:
-      - closed
-    branches:
-      - "main"
+  # pull_request_target:
+  #   types:
+  #     - closed
+  #   branches:
+  #     - "main"
   push:
     branches:
       - "main"
