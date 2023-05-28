@@ -6,6 +6,9 @@ on:
       - closed
     branches:
       - "main"
+  push:
+    branches:
+      - "main"
 jobs:
   trigger-downstream-mirror-branch:
     if: github.event.pull_request.merged == true
