@@ -14,8 +14,6 @@ jobs:
     uses: ricky-undeadcoders/grafana-delivery-pipelines/.github/workflows/mirror-branch.yml@main
     with:
       ref: ${{ github.ref_name }}
-    secrets:
-      token: ${{ secrets.PA_TOKEN }}
 
     # if: github.event.pull_request.merged == true
     # runs-on: ubuntu-latest
