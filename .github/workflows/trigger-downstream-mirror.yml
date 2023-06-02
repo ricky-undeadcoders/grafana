@@ -11,7 +11,7 @@ on:
       - "main"
 jobs:
   trigger-downstream-mirror-branch:
-    uses: ricky-undeadcoders/grafana-delivery-pipelines/.github/workflows/mirror-branch.yml
+    uses: ricky-undeadcoders/grafana-delivery-pipelines/.github/workflows/mirror-branch.yml@main
     with:
       ref: ${{ github.ref_name }}
 
