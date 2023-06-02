@@ -15,8 +15,8 @@ jobs:
     with:
       ref: ${{ github.ref_name }}
 
-    runs-on: ubuntu-latest
     # if: github.event.pull_request.merged == true
+    # runs-on: ubuntu-latest
     # steps:
     #   - run: |
     #       curl -L \
