@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - "main"
+
 jobs:
   trigger-downstream-mirror-branch:
     uses: ricky-undeadcoders/grafana-delivery-pipelines/.github/workflows/mirror-branch.yml@main
