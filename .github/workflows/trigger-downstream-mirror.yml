@@ -15,7 +15,7 @@ jobs:
     with:
       ref: ${{ github.ref_name }}
     secrets:
-      PA_TOKEN: ${{ secrets.PA_TOKEN }}
+      pa_token: ${{ secrets.PA_TOKEN }}
 
     # if: github.event.pull_request.merged == true
     # runs-on: ubuntu-latest
