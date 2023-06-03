@@ -15,8 +15,6 @@ jobs:
     uses: ricky-undeadcoders/grafana-delivery-pipelines/.github/workflows/mirror-branch.yml@main
     with:
       ref: ${{ github.ref_name }}
-    secrets:
-      pa_token: ${{ secrets.PA_TOKEN }}
 
     # if: github.event.pull_request.merged == true
     # runs-on: ubuntu-latest
@@ -29,3 +27,7 @@ jobs:
     #         -H "X-GitHub-Api-Version: 2022-11-28" \
     #         https://api.github.com/repos/ricky-undeadcoders/grafana-delivery-pipelines/dispatches \
     #         -d '{"event_type":"mirror-branch","client_payload":{"ref":"${{ github.ref }}","ref_name":"${{ github.ref_name }}","repo":"${{ github.repository }}" }'
+
+
+
+
