@@ -14,3 +14,7 @@ func main() {
 	fmt.Println("Security patch 4")
 	fmt.Println("Pushing from a remote *gasp*")
 }
+
+func new() {
+	fmt.Println("Hello there")
+}
