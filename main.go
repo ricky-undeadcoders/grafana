@@ -9,4 +9,5 @@ func main() {
 	fmt.Println("Let's cause a security patch merge conflict!")
 	fmt.Println("Security patch 1")
 	fmt.Println("Security patch 2")
+	fmt.Println("Security patch 3")
 }
