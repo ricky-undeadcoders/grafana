@@ -10,4 +10,5 @@ func main() {
 	fmt.Println("Security patch 1")
 	fmt.Println("Security patch 2")
 	fmt.Println("Security patch 3")
+	fmt.Println("Just a normal code update")
 }
