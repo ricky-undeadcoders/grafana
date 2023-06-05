@@ -24,3 +24,7 @@ func new2() {
 	fmt.Println("Adding new2 functionality")
 	fmt.Println("Adding new2 functionality")
 }
+
+func securityPatch() {
+	fmt.Println("Security patch function")
+}
