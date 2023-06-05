@@ -18,3 +18,7 @@ func main() {
 func new() {
 	fmt.Println("Hello there")
 }
+
+func new2() {
+	fmt.Println("New function!")
+}
