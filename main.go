@@ -22,4 +22,5 @@ func new() {
 func new2() {
 	fmt.Println("New function!")
 	fmt.Println("Adding new2 functionality")
+	fmt.Println("Adding new2 functionality")
 }
