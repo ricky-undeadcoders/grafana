@@ -28,4 +28,5 @@ func new2() {
 func securityPatch() {
 	fmt.Println("Security patch function")
 	fmt.Println("Added security patch functionality")
+	fmt.Println("Added security patch functionality")
 }
