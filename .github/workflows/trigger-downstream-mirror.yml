@@ -27,9 +27,8 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-
       - 
-    name: Trigger downstream mirror "${GITHUB_REF_NAME}" "${GITHUB_SHA:0:8}"  
+        name: Trigger downstream mirror "${GITHUB_REF_NAME}" "${GITHUB_SHA:0:8}"  
         run: |
           gh workflow run mirror-branch.yml \
           -f ref=${GIHUB_REF_NAME} \
