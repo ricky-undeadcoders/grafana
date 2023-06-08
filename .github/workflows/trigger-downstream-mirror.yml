@@ -12,26 +12,15 @@ env:
   GH_TOKEN: ${{ secrets.PA_TOKEN }}
 
 jobs:
-  test-for-merge-conflicts:
-    runs-on: ubuntu-latest
-    steps: 
-      -
-        name: Check for mirror conflicts "${GITHUB.REF_NAME}" "${GITHUB_SHA:0:8}"  
-        run: |
-          gh workflow run mirror-branch.yml \
-          -f ref=${GITHUB_REF_NAME} \
-          -f commit=${GITHUB_SHA} \
-          --repo ricky-undeadcoders/grafana-delivery-pipelines/
-
   trigger-downstream-mirror:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - 
-        name: Trigger downstream mirror "${GITHUB_REF_NAME}" "${GITHUB_SHA:0:8}"  
+        name: Trigger downstream mirror "${{ github.ref_name }}" "${{ github.sha }}"  
         run: |
           gh workflow run mirror-branch.yml \
           -f ref=${GIHUB_REF_NAME} \
-          -f sha=${GITHUB_SHA:0:7} \
+          -f sha=${GITHUB_SHA} \
           --repo ricky-undeadcoders/grafana-delivery-pipelines
           

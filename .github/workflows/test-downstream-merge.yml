@@ -1,4 +1,4 @@
-name: trigger-downstream-mirror
+name: test-downstream-merge
 run-name: test-downstream-merge-${{ github.ref_name }}-${{ github.sha }} 
 on:
   pull_request_target:
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       -
-        name: Check for mirror conflicts "${GITHUB.REF_NAME}" "${GITHUB_SHA:0:8}"  
+        name: Check for mirror conflicts "${{ github.ref_name }}" "${{ github.sha }}"  
         run: |
           gh workflow run check-pr-for-conflicts.yml \
           -f ref=${GITHUB_REF_NAME} \
