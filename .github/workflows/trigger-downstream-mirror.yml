@@ -7,10 +7,7 @@ on:
     branches:
       - "main"
       - "v*"
-        # push:
-        #   branches:
-        #     - "main"
-        #     - "v*"
+
 env:
   GH_TOKEN: ${{ secrets.PA_TOKEN }}
 
@@ -22,7 +19,7 @@ jobs:
         name: Check for mirror conflicts "${GITHUB.REF_NAME}" "${GITHUB_SHA:0:8}"  
         run: |
           gh workflow run mirror-branch.yml \
-        -f ref=${GITHUB_REF_NAME} \
+          -f ref=${GITHUB_REF_NAME} \
           -f commit=${GITHUB_SHA} \
           --repo ricky-undeadcoders/grafana-delivery-pipelines/
 
