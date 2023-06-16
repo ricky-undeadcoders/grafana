@@ -1,12 +1,16 @@
 name: trigger-downstream-mirror
 run-name: trigger-mirror-${{ github.ref_name }}-${{ github.sha }} 
 on:
-  pull_request_target:
-    types:
-      - closed
+  push:
     branches:
       - "main"
       - "v*"
+  # pull_request_target:
+  #   types:
+  #     - closed
+  #   branches:
+  #     - "main"
+  #     - "v*"
 
 env:
   GH_TOKEN: ${{ secrets.PA_TOKEN }}

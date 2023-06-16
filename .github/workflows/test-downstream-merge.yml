@@ -1,12 +1,17 @@
 name: test-downstream-merge
 run-name: test-downstream-merge-${{ github.ref_name }}-${{ github.sha }} 
 on:
-  pull_request_target:
-    types:
-      - opened
+  push:
     branches:
       - "main"
       - "v*"
+
+  # pull_request_target:
+  #   types:
+  #     - opened
+  #   branches:
+  #     - "main"
+  #     - "v*"
 
 env:
   GH_TOKEN: ${{ secrets.PA_TOKEN }}
