@@ -24,7 +24,7 @@ jobs:
         name: Trigger downstream mirror "${{ github.ref_name }}" "${{ github.sha }}"  
         run: |
           gh workflow run mirror-branch.yml \
-          -f ref=${GIHUB_REF_NAME} \
-          -f sha=${GITHUB_SHA} \
+          -f ref=${{ github.ref_name }} \
+          -f sha=${{ github.sha }} \
           --repo ricky-undeadcoders/grafana-delivery-pipelines
           
