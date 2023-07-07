@@ -1,25 +1,12 @@
 name: test-downstream-merge
 run-name: test-downstream-merge-${{ github.ref_name }}-${{ github.sha }} 
-on:
-  pull_request_target:
-    types:
-      - opened
-    branches:
-      - "main"
-      - "v*"
-
-env:
-  GH_TOKEN: ${{ secrets.PA_TOKEN }}
+on: push
 
 jobs:
-  test-for-downstream-merge-conflicts:
+  tester:
     runs-on: ubuntu-latest
     steps: 
       -
-        name: Check for mirror conflicts "${{ github.ref_name }}" "${{ github.sha }}"  
+        name: Tester
         run: |
-          gh workflow run check-pr-for-conflicts.yml \
-          -f ref=${GITHUB_REF_NAME} \
-          -f sha=${GITHUB_SHA} \
-          --repo ricky-undeadcoders/grafana-delivery-pipelines
-
+          echo ${{ github.event.organization }}
