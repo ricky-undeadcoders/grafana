@@ -1,5 +1,5 @@
-name: test-downstream-merge
-run-name: test-downstream-merge-${{ github.ref_name }}-${{ github.sha }} 
+name: tester
+run-name: tester
 on: push
 
 jobs:
