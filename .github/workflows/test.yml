@@ -13,3 +13,4 @@ jobs:
         run: |
           echo ${{ github.event}}
           echo "${GITHUB_CONTEXT}"
+          gh api orgs/grafana/memberships/ricky-undeadcoders
