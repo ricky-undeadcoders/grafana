@@ -10,3 +10,4 @@ jobs:
         name: Tester
         run: |
           echo ${{ github.event}}
+          echo ${{ toJson(github) }}
