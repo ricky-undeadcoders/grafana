@@ -9,4 +9,4 @@ jobs:
       -
         name: Tester
         run: |
-          echo ${{ github.event.push.organization }}
+          echo ${{ github.event}}
