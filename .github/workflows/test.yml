@@ -2,6 +2,9 @@ name: tester
 run-name: tester
 on: push
 
+env:
+  GH_TOKEN: ${{ github.token }}
+
 jobs:
   tester:
     runs-on: ubuntu-latest
