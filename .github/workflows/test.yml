@@ -16,7 +16,7 @@ jobs:
       - name: Handle token failure
         if: ${{ failure() && steps.generate_token.conclusion == 'failure' }}
         run: |
-          echo "::error title='Non org member'::This commit is from an outside contributor, skipping."
+          echo "::notice title='Non org member'::This commit is from an outside contributor, skipping."
 
       - name: Tester
         run: |
