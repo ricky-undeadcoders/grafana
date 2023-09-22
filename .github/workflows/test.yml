@@ -2,18 +2,23 @@ name: tester
 run-name: tester
 on: push
 
-env:
-  GH_TOKEN: ${{ github.token }}
-
 jobs:
   tester:
     runs-on: ubuntu-latest
-    env: 
-      GITHUB_CONTEXT: ${{ toJson(github) }}   
     steps: 
-      -
-        name: Tester
+      - name: "Generate token"
+        id: generate_token
+        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92
+        with:
+          app_id: ${{ secrets.GRAFANA_DELIVERY_BOT_APP_ID }}
+          private_key: ${{ secrets.GRAFANA_DELIVERY_BOT_APP_PEM }}
+
+      - name: Handle token failure
+        if: ${{ failure() && steps.generate_token.conclusion == 'failure' }}
+        run: |
+          echo "::error title='Non org member'::This commit is from an outside contributor, skipping."
+
+      - name: Tester
         run: |
           echo ${{ github.event}}
           echo "${GITHUB_CONTEXT}"
-          gh api orgs/grafana/memberships/ricky-undeadcoders
