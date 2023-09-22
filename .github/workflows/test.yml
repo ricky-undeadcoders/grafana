@@ -15,7 +15,7 @@ jobs:
           private_key: ${{ secrets.GRAFANA_DELIVERY_BOT_APP_PEM }}
 
       - name: Handle token failure
-        if: ${{ steps.generate_token.conclusion == 'failure' }}
+        if: ${{ steps.generate_token.outputs.token == 'failure' }}
         run: |
           echo "::notice title='Non org member'::This commit is from an outside contributor, skipping."
           exit 0
@@ -23,4 +23,6 @@ jobs:
       - name: Tester
         run: |
           echo ${{ github.event}}
+          echo Token
+          echo ${{ steps.generate_token.outputs.token }}
           echo "${GITHUB_CONTEXT}"
