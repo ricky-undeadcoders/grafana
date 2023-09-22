@@ -15,7 +15,7 @@ jobs:
           private_key: ${{ secrets.GRAFANA_DELIVERY_BOT_APP_PEM }}
 
       - name: Handle token failure
-        if: ${{ failure() && steps.generate_token.conclusion == 'failure' }}
+        if: ${{ steps.generate_token.conclusion == 'failure' }}
         run: |
           echo "::notice title='Non org member'::This commit is from an outside contributor, skipping."
           exit 0
