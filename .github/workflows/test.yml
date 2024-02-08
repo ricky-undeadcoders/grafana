@@ -1,29 +1,28 @@
 name: tester
 run-name: tester
-on: push
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo: 
+        required: true
+        type: string
+        default: ""
+
 
 jobs:
   tester:
     runs-on: ubuntu-latest
     steps: 
-      - name: "Generate token"
-        id: generate_token
-        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92
-          # continue-on-error: true
-        with:
-          app_id: ${{ secrets.GRAFANA_DELIVERY_BOT_APP_ID }}
-          private_key: ${{ secrets.GRAFANA_DELIVERY_BOT_APP_PEM }}
-
-      - name: Handle token failure
-        if: ${{ steps.generate_token.outputs.token != '' }}
-        run: |
-          echo "::notice title='Non org member'::This commit is from an outside contributor, skipping."
-          exit 0
-
-      - name: Tester
-        if: ${{ steps.generate_token.outputs.token != '' }}
-        run: |
-          echo ${{ github.event}}
-          echo Token
-          echo "'${{ steps.generate_token.outputs.token }}'"
-          echo "${GITHUB_CONTEXT}"
+      - name: Get repo name
+        run: echo "repo_name=${{ inputs.repo != '' && inputs.repo || 'ricky-undeadcoders/repo' }}" >> ${GITHUB_OUTPUT}
+        id: get-repo-name
+      - name: echo repo name
+        run: echo ${{ steps.get-repo-name.outputs.repo_name }}
+          # - name: "Checkout src repo"
+          #   uses: actions/checkout@v4
+          #   with: 
+          #     repository: ${{ steps.get-repo-name.outputs.repo_name }}
+          #     ref: ${{ inputs.ref }}
+          #     path: src
+          #     fetch-depth: 0
