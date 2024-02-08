@@ -8,6 +8,10 @@ on:
         required: false
         type: string
         default: ""
+      context: 
+        required: false
+        type: string
+        default: "."
 
 
 jobs:
@@ -15,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Get repo name
-        run: echo "repo_name=${{ inputs.repo != '' && inputs.repo || 'ricky-undeadcoders/repo' }}" >> ${GITHUB_OUTPUT}
+        run: echo "repo_name=${{ inputs.repo != '' && inputs.repo || join(inputs.context, '/Dockerfile') }}" >> ${GITHUB_OUTPUT}
         id: get-repo-name
       - name: echo repo name
         run: echo ${{ steps.get-repo-name.outputs.repo_name }}
