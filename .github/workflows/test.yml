@@ -18,15 +18,8 @@ jobs:
   tester:
     runs-on: ubuntu-latest
     steps: 
-      - name: Get repo name
-        run: echo "repo_name=${{ inputs.repo != '' && inputs.repo || format('{0}/Dockerfile', inputs.context) }}" >> ${GITHUB_OUTPUT}
-        id: get-repo-name
-      - name: echo repo name
-        run: echo ${{ steps.get-repo-name.outputs.repo_name }}
-          # - name: "Checkout src repo"
-          #   uses: actions/checkout@v4
-          #   with: 
-          #     repository: ${{ steps.get-repo-name.outputs.repo_name }}
-          #     ref: ${{ inputs.ref }}
-          #     path: src
-          #     fetch-depth: 0
+      - name: Get Dockerfile name and location
+        run: echo "dockerfile=${{ inputs.file != '' && inputs.file || format('{0}/Dockerfile', inputs.context) }}" >> ${GITHUB_OUTPUT}
+        id: get-dockerfile
+      - name: echo Dockerfile name
+        run: echo ${{ steps.get-dockerfile.outputs.dockerfile }}
