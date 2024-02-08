@@ -4,7 +4,7 @@ run-name: tester
 on:
   workflow_dispatch:
     inputs:
-      repo: 
+      file: 
         required: false
         type: string
         default: ""
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Get repo name
-        run: echo "repo_name=${{ inputs.repo != '' && inputs.repo || join(inputs.context, \"/Dockerfile\") }}" >> ${GITHUB_OUTPUT}
+        run: echo "repo_name=${{ inputs.repo != '' && inputs.repo || format('{0}/Dockerfile', inputs.context) }}" >> ${GITHUB_OUTPUT}
         id: get-repo-name
       - name: echo repo name
         run: echo ${{ steps.get-repo-name.outputs.repo_name }}
