@@ -1,25 +1,24 @@
 name: tester
 run-name: tester
 
-on:
-  workflow_dispatch:
-    inputs:
-      file: 
-        required: false
-        type: string
-        default: ""
-      context: 
-        required: false
-        type: string
-        default: "."
+on: push
 
+env:
+  REF: main
 
 jobs:
   tester:
     runs-on: ubuntu-latest
     steps: 
-      - name: Get Dockerfile name and location
-        run: echo "dockerfile=${{ inputs.file != '' && inputs.file || format('{0}/Dockerfile', inputs.context) }}" >> ${GITHUB_OUTPUT}
-        id: get-dockerfile
-      - name: echo Dockerfile name
-        run: echo ${{ steps.get-dockerfile.outputs.dockerfile }}
+      - name: "Checkout repo"
+        uses: actions/checkout@v4
+        with:
+          path: repo
+      - name: Set branch name
+        working-directory: repo
+        run: |
+          BRANCH_NAME=${REF}-$(git log -1 --format=%H)
+          git checkout -b $BRANCH_NAME
+          touch TestFile.txt
+          git add -A; git status;
+          git log;
